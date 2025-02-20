@@ -60,15 +60,15 @@ body {
 .footer {
     text-align: center;
     padding: 20px 10px;
-    background-color: #f4f4f4; /* Світлий фон для нормальної теми */
-    color: var(--text-color); /* Чорний текст для нормальної теми */
+    background-color: #f4f4f4;
+    color: var(--text-color);
     width: 100%;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Додаємо анімацію для зміни теми */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark-mode .footer {
-    background-color: #333333; /* Більш темний фон для темної теми */
-    color: #ffffff; /* Білий текст для темної теми */
+    background-color: #333333;
+    color: #ffffff;
 }
 
 h2 {
@@ -204,10 +204,15 @@ form {
 
 a {
     color: var(--link-color);
-    text-decoration: none; /* Видаляє підкреслення посилань за замовчуванням */
-    transition: color 0.3s ease; /* Плавна анімація зміни кольору */
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 a:hover {
     color: var(--link-hover-color);
+}
+
+hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
