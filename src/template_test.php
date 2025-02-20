@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="public/style.css">
 </head>
 <body>
+<div class="content-wrapper">
 <div class="container">
 <h2><?php echo $a . " " . $symbol . " " . $b . " = ?"; ?></h2>
     <form method="post" id="test-form">
@@ -23,8 +24,8 @@
     <p class="score">✅ Вірних: <?php echo $_SESSION['correct']; ?> | ❌ Невірних: <?php echo $_SESSION['incorrect']; ?></p>
     <p id="timer" data-time="<?php echo $remaining_time; ?>">Час залишився: <?php echo $remaining_time; ?> секунд</p>
 </div>
-<button id="theme-toggle" class="btn-theme">🌙 Темна / ☀️ Світла</button>
-<script src="public/script.js"></script>
+<button id="theme-toggle" class="btn-theme">🌙 Темна / ☀️ Світла</button></div>
+<?php require 'footer.php'; ?>
 <script>
     function selectAnswer(answer) {
         document.getElementById("selected_answer").value = answer;

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="public/style.css">
 </head>
 <body>
+<div class="content-wrapper">
 <div class="container">
     <h2>Математичний тест</h2>
     <p>Оберіть тип завдання щоб почати:</p>
@@ -17,7 +18,7 @@
         <button class="btn test-selection" type="submit" name="test_type" value="subtraction">Віднімання</button>
     </form>
 </div>
-<button id="theme-toggle" class="btn-theme">🌙 Темна / ☀️ Світла</button>
-<script src="public/script.js"></script>
+<button id="theme-toggle" class="btn-theme">🌙 Темна / ☀️ Світла</button></div>
+<?php require 'footer.php'; ?>
 </body>
 </html>

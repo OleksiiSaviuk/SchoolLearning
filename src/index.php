@@ -31,7 +31,8 @@ if (isset($_GET['type'])) {
     if (file_exists($test_file)) {
         require $test_file;
     } else {
-        echo "<div class='message'>Файл завдання не знайдено. Будь ласка, переконайтеся в правильності вибору типу тесту.</div>";
+        session_destroy();
+        header("Location: /");
     }
 }
 

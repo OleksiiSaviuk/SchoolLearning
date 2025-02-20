@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="public/style.css">
 </head>
 <body>
+<div class="content-wrapper">    
 <div class="container">
     <h2>Тест завершено</h2>
     <p>✅ Вірних відповідей: <?php echo $_SESSION['correct']; ?></p>
@@ -18,6 +19,7 @@
         <button class="btn test-selection" type="submit" name="test_type" value="subtraction">Віднімання</button>
     </form>
 </div>
-<script src="public/script.js"></script>
+<button id="theme-toggle" class="btn-theme">🌙 Темна / ☀️ Світла</button></div>
+<?php require 'footer.php'; ?>
 </body>
 </html>
