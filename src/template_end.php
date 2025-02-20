@@ -23,6 +23,7 @@
         <button class="btn test-selection" type="submit" name="test_type" value="subtraction">Віднімання</button>
     </form>
 </div>
+<?php require 'leaders_board.php'; ?>
 <button id="theme-toggle" class="btn-theme">🌙 Темна / ☀️ Світла</button></div>
 <?php require 'footer.php'; ?>
 </body>
