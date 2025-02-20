@@ -1,0 +1,177 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --box-bg: #f5f5f5;
+    --btn-bg: #007bff;
+    --btn-text: #ffffff;
+    --border-color: #dddddd;
+}
+
+.dark-mode {
+    --bg-color: #222222;
+    --text-color: #f5f5f5;
+    --box-bg: #333333;
+    --btn-bg: #ff9800;
+    --btn-text: #222222;
+    --border-color: #555555;
+}
+
+.container {
+    text-align: center;
+    background: var(--box-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+.btn {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.answer-boxes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+    justify-items: center;
+}
+
+.answer-box {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+}
+
+.answer-box:hover {
+    transform: scale(1.1);
+}
+
+.answer-box.selected {
+    background: #28a745;
+}
+
+#timer {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.btn-theme {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-theme:hover {
+    opacity: 0.8;
+}
+
+.message {
+    color: red;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn.test-selection {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px; 
+    font-weight: bold;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    margin: 10px;
+}
+
+.btn.test-selection:hover {
+    transform: scale(1.1);
+}
+
+.score {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
