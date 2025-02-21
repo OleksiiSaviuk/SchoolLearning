@@ -1,21 +1,21 @@
-version: '3.3'
-
 services:
   web:
     build:
       context: .
-    ports:
-      - "8080:80" 
-    volumes:
-      - ./src:/var/www/html
-      - ./public:/var/www/html/public
-  db:
-    image: mysql:latest
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: test_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: userpassword
+      MYSQL_SERVER: ${MYSQL_SERVER}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "8080:80"
+  db:
+    image: mysql:9.1.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - ./db_data:/var/lib/mysql
       - ./database.sql:/docker-entrypoint-initdb.d/init.sql

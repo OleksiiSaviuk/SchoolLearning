@@ -24,7 +24,6 @@
     <p class="score">✅ Вірних: <?php echo $_SESSION['correct']; ?> | ❌ Невірних: <?php echo $_SESSION['incorrect']; ?></p>
     <p id="timer" data-time="<?php echo $remaining_time; ?>">Час залишився: <?php echo $remaining_time; ?> секунд</p>
 </div>
-<button id="theme-toggle" class="btn-theme">🌙 Темна / ☀️ Світла</button></div>
 <?php require 'footer.php'; ?>
 <script>
     function selectAnswer(answer) {

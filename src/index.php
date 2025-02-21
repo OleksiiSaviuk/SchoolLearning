@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require 'sql_connect.php';
+
 function processAnswer($user_choice, $correct_value) {
     if ($user_choice === intval($correct_value)) {
         $_SESSION['correct']++;
@@ -17,27 +19,18 @@ function resetSession() {
     $_SESSION['incorrect'] = 0;
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save'])) {
+    require 'save_score.php';
+    require 'template_start.php';
+    exit;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['test_type'])) {
     resetSession();
     $test_type = $_POST['test_type'];
     header("Location: " . $_SERVER['PHP_SELF'] . "?type=$test_type");
     exit;
 }
-
-if (isset($_GET['type'])) {
-    $type = $_GET['type'];
-    $test_file = "tests/{$type}.php";
-
-    if (file_exists($test_file)) {
-        require $test_file;
-    } else {
-        session_destroy();
-        header("Location: /");
-    }
-}
-
-$generate_question = 'generate_question';
-$generate_answers = 'generate_answers';
 
 $test_active = isset($_SESSION['start_time']);
 
@@ -49,14 +42,30 @@ if ($test_active && (time() - $_SESSION['start_time']) >= 60) {
 if (!$test_active) {
     require 'template_start.php';
 } else {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'], $_POST['correct_answer'])) {
-        processAnswer(intval($_POST['answer']), intval($_POST['correct_answer']));
-        header("Location: " . $_SERVER['PHP_SELF'] . '?type=' . ($_GET['type'] ?? 'multiplication'));
-        exit;
+    if (isset($_GET['type'])) {
+        $type = $_GET['type'];
+        $test_file = "tests/{$type}.php";
+
+        if (file_exists($test_file)) {
+            require $test_file;
+
+            $generate_question = 'generate_question';
+            $generate_answers = 'generate_answers';
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'], $_POST['correct_answer'])) {
+                processAnswer(intval($_POST['answer']), intval($_POST['correct_answer']));
+                header("Location: " . $_SERVER['PHP_SELF'] . '?type=' . ($_GET['type'] ?? 'multiplication'));
+                exit;
+            }
+            $remaining_time = 60 - (time() - $_SESSION['start_time']);
+            list($a, $b, $correct_answer, $symbol) = $generate_question();
+            $answers = $generate_answers($correct_answer);
+            require 'template_test.php';
+
+        } else {
+            session_destroy();
+            header("Location: /");
+        }
     }
-    $remaining_time = 60 - (time() - $_SESSION['start_time']);
-    list($a, $b, $correct_answer, $symbol) = $generate_question();
-    $answers = $generate_answers($correct_answer);
-    require 'template_test.php';
 }
 ?>

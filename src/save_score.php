@@ -1,17 +1,18 @@
 <?php
-require 'sql_connect.php';
-
-$name = htmlspecialchars($_POST['name']);
-$class = htmlspecialchars($_POST['class']);
+$name = htmlspecialchars(substr($_POST['name'], 0, 25));
+$class = htmlspecialchars(substr($_POST['class'], 0, 5));
 $score = intval($_POST['score']);
 $test_type = htmlspecialchars($_POST['test_type']);
 $datetime = date("Y-m-d H:i:s");
 
-$sql = "INSERT INTO scores (name, class, score, test_type, entry_date) VALUES ('$name', '$class', '$score', '$test_type', '$datetime')";
-if ($conn->query($sql) === TRUE) {
-  echo "Результат успішно збережено!";
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
+$stmt = $conn->prepare("INSERT INTO scores (name, class, score, test_type, entry_date) VALUES (?, ?, ?, ?, ?)");
+$stmt->bind_param("ssiss", $name, $class, $score, $test_type, $datetime);
+
+if (!$stmt->execute()) {
+    echo "Error: " . $stmt->error;
+    exit;
 }
-require 'template_start.php';
+$stmt->close();
+
+session_destroy();
 ?>
