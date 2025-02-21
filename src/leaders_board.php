@@ -40,7 +40,6 @@ foreach ($testTypes as $type) {
         echo "<tr><td colspan='4'>Немає результатів</td></tr>";
     }
     echo "</table>";
-    echo "<hr>";
     echo "</div>";    
 }
 ?>

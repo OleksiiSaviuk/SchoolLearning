@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 timeLeft--;
                 timerElement.textContent = "Час залишився: " + timeLeft + " секунд";
             } else {
-                window.location.href = window.location.href; // Перезавантаження сторінки
+                window.location.href = window.location.href;
             }
         }
 
